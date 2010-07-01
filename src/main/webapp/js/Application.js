@@ -71,7 +71,7 @@ JcrExplorer.Viewport = Ext.extend(Ext.Viewport, {
                     xtype:'statusbar',
                     region:'south',
                     height: 25,
-                    defaultText: 'Smart Console 0.01'
+                    defaultText: 'JCR Explorer 0.01'
 
                 }
             ]

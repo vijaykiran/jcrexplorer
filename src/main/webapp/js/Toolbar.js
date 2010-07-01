@@ -180,7 +180,7 @@ JcrExplorer.Toolbar = Ext.extend(Ext.Toolbar, {
 
     handleButton:function() {
         Ext.Msg.show({
-            title:'Smart Console',
+            title:'JCR Explorer',
             msg: 'This feature is not yet implemented.',
             buttons: Ext.Msg.OK,
             icon: Ext.MessageBox.INFO
