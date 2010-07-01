@@ -1,0 +1,92 @@
+/*
+ * Copyright 2010 Vijay Kiran<mail@vijaykiran.com>
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
+
+/*
+    Document   : main.css
+    Author     : vijaykiran
+    Description:
+        The main CSS file for JCR Explorer
+*/
+
+/* Toolbar */
+.node-add {
+    background-image: url(../images/node-add.png) !important;
+}
+
+.node-delete {
+    background-image: url(../images/node-delete.png) !important;
+}
+
+.node-copy {
+    background-image: url(../images/node-copy.png) !important;
+}
+
+.node-rename {
+    background-image: url(../images/node-rename.png) !important;
+}
+
+.node-move {
+    background-image: url(../images/node-move.png) !important;
+}
+
+.prop-add {
+    background-image: url(../images/prop-add.png) !important;
+}
+
+.prop-delete {
+    background-image: url(../images/prop-delete.png) !important;
+}
+
+.import-xml {
+    background-image: url(../images/import-xml.png) !important;
+}
+
+.export-xml {
+    background-image: url(../images/export-xml.png) !important;
+}
+
+.import-cnd {
+    background-image: url(../images/import-cnd.png) !important;
+}
+
+.export-cnd {
+    background-image: url(../images/export-cnd.png) !important;
+}
+
+.console {
+    background-image: url(../images/console.png) !important;
+}
+
+.save {
+    background-image: url(../images/save.png) !important;
+}
+
+.reset {
+    background-image: url(../images/refresh.png) !important;
+}
+
+.logout {
+    background-image: url(../images/logout.png) !important;
+}
+
+/*Tree*/
+.simple-node {
+    background-image: url(../images/page.png) !important;
+}
+
+.group-node {
+    background-image: url(../images/folder.png) !important;
+}
