@@ -86,9 +86,6 @@ JcrExplorer.NodeDetailsTabPanel = Ext.extend(Ext.TabPanel, {
         //        this.contextMenu.showAt(tab.header.getPosition());
     }
 
-
-
-
 });
 
 Ext.reg('node_details_tabpanel', JcrExplorer.NodeDetailsTabPanel);

@@ -97,18 +97,30 @@ JcrExplorer.NodePropertiesPanel = Ext.extend(Ext.FormPanel, {
     loadProperties:function(store, records, options) {
         var length = records.length;
         for (var i = 0, len = length; i < length; ++i) {
-            switch (records[i].get('type')) {
+            var property = records[i];
+            var propType = property.get('type');
+            //TODO sort based on property namespace
+            switch (propType) {
+                case 'BOOLEAN':
+                    this.add({
+                        boxLabel: property.get('name'),
+                        xtype: 'checkbox',
+                        boxLabelStyle: 'font-weight:bold;',
+                        checked: property.get('value')
+                    });
+                    break;
                 default:
-                    this.add(
-                    {
-                        fieldLabel: records[i].get('name'),
+                    this.add({
+                        fieldLabel: property.get('name'),
                         xtype: 'textfield',
                         labelStyle: 'font-weight:bold;',
-                        value: records[i].get('value')
+                        value: property.get('value')
                     });
-            }
 
+
+            }
         }
+        this.doLayout(false, true);
     }
 
 

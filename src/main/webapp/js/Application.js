@@ -40,7 +40,7 @@ JcrExplorer.Viewport = Ext.extend(Ext.Viewport, {
 
                 },
                 {
-                    title: 'Nodes',
+                    title: 'Nodes', //TODO Externalize String
                     xtype: 'node_tree_panel',
                     region:'west',
                     split:true,
@@ -71,7 +71,7 @@ JcrExplorer.Viewport = Ext.extend(Ext.Viewport, {
                     xtype:'statusbar',
                     region:'south',
                     height: 25,
-                    defaultText: 'JCR Explorer 0.01'
+                    defaultText: 'JCR Explorer 0.01'  //TODO Externalize the string
 
                 }
             ]
