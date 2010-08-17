@@ -109,6 +109,13 @@ JcrExplorer.NodePropertiesPanel = Ext.extend(Ext.FormPanel, {
                         checked: property.get('value')
                     });
                     break;
+                case 'DATE':
+                    this.add({
+                       fieldLabel: property.get('name'),
+                        xtype: 'date',
+                        value: property.get('value')
+                    });
+                    break;
                 default:
                     this.add({
                         fieldLabel: property.get('name'),

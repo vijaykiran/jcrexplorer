@@ -33,6 +33,7 @@
     <script type="text/javascript" src="/js/NodePropertiesPanel.js"></script>
     <script type="text/javascript" src="/js/NodeDetailsTabPanel.js"></script>
     <script type="text/javascript" src="/js/NodeTreePanel.js"></script>
+    <script type="text/javascript" src="/js/NewNodeFormPanel.js"></script>
     <script type="text/javascript" src="/js/Toolbar.js"></script>
     <script type="text/javascript" src="/js/Application.js"></script>
     <title>JCR Explorer</title>

@@ -45,7 +45,8 @@ JcrExplorer.Toolbar = Ext.extend(Ext.Toolbar, {
                     items: [
                         {
                             text: 'Add',
-                            iconCls: 'node-add'
+                            iconCls: 'node-add',
+                            handler: this.showNewNodeForm
                         },
                         {
                             text: 'Delete',
@@ -176,6 +177,16 @@ JcrExplorer.Toolbar = Ext.extend(Ext.Toolbar, {
 
     onRender:function() {
         JcrExplorer.Toolbar.superclass.onRender.apply(this, arguments);
+    },
+
+    showNewNodeForm:function(){
+       var window = new Ext.Window({
+            items: [{
+                xtype: 'new_node_form_panel'
+            }]
+       });
+       window.show();
+
     },
 
     handleButton:function() {
