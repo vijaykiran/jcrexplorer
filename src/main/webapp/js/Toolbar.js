@@ -109,6 +109,7 @@ JcrExplorer.Toolbar = Ext.extend(Ext.Toolbar, {
                 },
                 {
                     xtype:'buttongroup',
+                    
                     title:'CND',
                     defaults:{
                         width: 55,
