@@ -25,36 +25,52 @@
 /*global Ext, JcrExplorer */
 Ext.ns('JcrExplorer');
 
+
 JcrExplorer.NewNodeFormPanel = Ext.extend(Ext.FormPanel, {
 
     initComponent:function() {
         Ext.apply(this, {
             autoHeight: true,
             border:false,
-            padding: 5,
+            autoWidth: true,
+            padding: 10,
             autoScroll:true,
-            labelWidth: 50,
+            labelWidth: 120,
             defaults:{
-                width: 400
+                width: 250
+                //                labelStyle: 'font-weight:bold;'
             },
             labelSeparator: ' ',
-            labelAlign:'left',
+            labelAlign:'right',
             items:[
                 {
-                    fieldLabel: 'Node Name',
-                    xtype: 'textfield',
-                    labelStyle: 'font-weight:bold;'
+                    fieldLabel: 'Node Name:',
+                    xtype: 'textfield'
+                },
+                {
+                    fieldLabel: 'Primary Node Type:',
+                    xtype: 'combo',
+                    displayField: 'name',
+                    valueField: 'code',
+                    store: new Ext.data.JsonStore({
+                        url: '/jcrexplorer/nodeService/nodetypes',
+                        root: 'nodetypes',
+                        fields:['name']
+                    }),
+                    typeAhead: false,
+                    hideTrigger: true,
+                    loadingText: 'Loading ...',
+                    minChars: 2
                 }
             ]
-
         });
 
         JcrExplorer.NewNodeFormPanel.superclass.initComponent.apply(this, arguments);
-
     },
+
+
     onRender:function() {
         JcrExplorer.NewNodeFormPanel.superclass.onRender.apply(this, arguments);
-
     }
 
 });

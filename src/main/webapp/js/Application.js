@@ -90,7 +90,11 @@ JcrExplorer.Viewport = Ext.extend(Ext.Viewport, {
 
     },//eo function initComponent
 
-    onNodeClick:function(node, event) {
+
+
+
+    onNodeClick:function(node) {
+        this.currentNode = node;
         this.propertiesPanel.openTabForNode(node);
     }
 

@@ -16,30 +16,18 @@
 
 package com.vijaykiran.jcrexplorer;
 
-import javax.jcr.Credentials;
-import javax.jcr.Item;
-import javax.jcr.Node;
-import javax.jcr.NodeIterator;
-import javax.jcr.PathNotFoundException;
-import javax.jcr.Property;
-import javax.jcr.PropertyIterator;
-import javax.jcr.PropertyType;
-import javax.jcr.Repository;
-import javax.jcr.RepositoryException;
-import javax.jcr.Session;
-import javax.jcr.SimpleCredentials;
-import javax.jcr.Value;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import org.apache.jackrabbit.rmi.repository.RMIRemoteRepository;
 import org.json.JSONException;
 import org.json.JSONStringer;
 import org.json.JSONWriter;
 import org.slf4j.LoggerFactory;
+
+import javax.jcr.*;
+import javax.jcr.nodetype.NodeType;
+import javax.jcr.nodetype.NodeTypeIterator;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  * @author vijaykiran
@@ -68,7 +56,7 @@ public class NodeResource {
     public Response getNode(@QueryParam("node") final String path) {
 
         logger.info("returing json for " + path);
-        Response r = null;
+        Response r;
         try {
 
 
@@ -125,7 +113,7 @@ public class NodeResource {
                     Value[] values = prop.getValues();
                     StringBuilder valueString = new StringBuilder();
                     for (Value v : values) {
-                        valueString.append("," + v.getString());
+                        valueString.append(",").append(v.getString());
                     }
 
                     jsonProp.key("value").value(valueString.toString().replaceFirst(",", ""));
@@ -149,6 +137,36 @@ public class NodeResource {
         } catch (RepositoryException ex) {
             ex.printStackTrace();
         }
+
+        return r;
+
+    }
+
+    @GET
+    @POST
+    @Path("/nodetypes")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getNodeTypes(@FormParam("query") final String query) {
+        System.out.println("query = " + query);
+        Response r = null;
+        try {
+            NodeTypeIterator primaryNodeTypes = session.getWorkspace().getNodeTypeManager().getPrimaryNodeTypes();
+            JSONWriter jsonArray = new JSONStringer().object().key("nodetypes").array();
+
+            while (primaryNodeTypes.hasNext()) {
+
+                NodeType nt = primaryNodeTypes.nextNodeType();
+                JSONWriter nodetype = jsonArray.object();
+                nodetype.key("name").value(nt.getName());
+                nodetype.endObject();
+            }
+            r = Response.ok(jsonArray.endArray().endObject().toString(), MediaType.APPLICATION_JSON).build();
+        } catch (RepositoryException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
 
         return r;
 

@@ -179,13 +179,29 @@ JcrExplorer.Toolbar = Ext.extend(Ext.Toolbar, {
         JcrExplorer.Toolbar.superclass.onRender.apply(this, arguments);
     },
 
-    showNewNodeForm:function(){
-       var window = new Ext.Window({
-            items: [{
-                xtype: 'new_node_form_panel'
-            }]
-       });
-       window.show();
+    showNewNodeForm:function() {
+        var formWindow = new Ext.Window({
+            items: [
+                {
+                    xtype: 'new_node_form_panel'
+                }
+            ],
+            width: 450,
+            title: 'New Node'
+
+        });
+
+        formWindow.addButton({
+            text: 'Save',
+            type: 'submit'
+        });
+
+        formWindow.addButton({
+            text: 'Cancel'
+        }, function() {
+            formWindow.hide();
+        });
+        formWindow.show();
 
     },
 
