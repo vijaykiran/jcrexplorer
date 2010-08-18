@@ -147,18 +147,20 @@ public class NodeResource {
     @Path("/nodetypes")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getNodeTypes(@FormParam("query") final String query) {
-        System.out.println("query = " + query);
+
         Response r = null;
         try {
             NodeTypeIterator primaryNodeTypes = session.getWorkspace().getNodeTypeManager().getPrimaryNodeTypes();
             JSONWriter jsonArray = new JSONStringer().object().key("nodetypes").array();
 
             while (primaryNodeTypes.hasNext()) {
-
                 NodeType nt = primaryNodeTypes.nextNodeType();
-                JSONWriter nodetype = jsonArray.object();
-                nodetype.key("name").value(nt.getName());
-                nodetype.endObject();
+                if ((query != null && nt.getName().startsWith(query)) || query == null) {
+                    JSONWriter nodetype = jsonArray.object();
+                    nodetype.key("name").value(nt.getName());
+                    nodetype.endObject();
+                }
+
             }
             r = Response.ok(jsonArray.endArray().endObject().toString(), MediaType.APPLICATION_JSON).build();
         } catch (RepositoryException e) {
